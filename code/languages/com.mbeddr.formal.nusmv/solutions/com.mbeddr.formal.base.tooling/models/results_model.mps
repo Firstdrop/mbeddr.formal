@@ -324,6 +324,26 @@
         </node>
       </node>
     </node>
+    <node concept="2tJIrI" id="4xbaItGFc9L" role="jymVt" />
+    <node concept="2YIFZL" id="4xbaItGFc5e" role="jymVt">
+      <property role="TrG5h" value="getResults" />
+      <property role="od$2w" value="false" />
+      <property role="DiZV1" value="false" />
+      <property role="2aFKle" value="false" />
+      <node concept="3clFbS" id="4xbaItGFc5f" role="3clF47">
+        <node concept="3clFbF" id="4xbaItGFc5g" role="3cqZAp">
+          <node concept="37vLTw" id="4xbaItGFcrc" role="3clFbG">
+            <ref role="3cqZAo" node="5a54bO_Heob" resolve="results" />
+          </node>
+        </node>
+      </node>
+      <node concept="3Tm1VV" id="4xbaItGFc5l" role="1B3o_S" />
+      <node concept="_YKpA" id="4xbaItGFccn" role="3clF45">
+        <node concept="3uibUv" id="4xbaItGFcer" role="_ZDj9">
+          <ref role="3uigEE" node="TJrbIN7de$" resolve="IAnalysisResult" />
+        </node>
+      </node>
+    </node>
     <node concept="2tJIrI" id="5a54bO_HfwM" role="jymVt" />
     <node concept="2YIFZL" id="5a54bO_Hfym" role="jymVt">
       <property role="TrG5h" value="existsResultForNode" />
