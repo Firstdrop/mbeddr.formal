@@ -14,7 +14,7 @@
     <use id="7e777b53-0a6b-4719-b36d-10475788d49f" name="com.mbeddr.formal.safety.stamp" version="0" />
     <use id="83ad0200-6e50-4939-a389-76bf899be11b" name="com.mbeddr.formal.req.nusmv" version="0" />
     <use id="0deccdfd-196b-4d8c-895e-0d6cb8014dfd" name="com.mbeddr.formal.req.base" version="0" />
-    <devkit ref="b0ef168f-6f92-4bd0-82f3-cf0521463683(fasten.requirements)" />
+    <devkit ref="b0ef168f-6f92-4bd0-82f3-cf0521463683(com.mbeddr.formal.req.devkit)" />
     <devkit ref="edb51d2d-64eb-404a-818e-c1cabf1d58d5(fasten.nusmv)" />
   </languages>
   <imports />
@@ -57,6 +57,47 @@
       <concept id="9066112305507315532" name="com.mbeddr.formal.nusmv.cbd.structure.OutputPort" flags="ng" index="3UnI9n" />
       <concept id="9066112305501242592" name="com.mbeddr.formal.nusmv.cbd.structure.Precondition" flags="ng" index="3US$BV" />
       <concept id="9066112305501330661" name="com.mbeddr.formal.nusmv.cbd.structure.Postcondition" flags="ng" index="3UTh7Y" />
+    </language>
+    <language id="7e777b53-0a6b-4719-b36d-10475788d49f" name="com.mbeddr.formal.safety.stamp">
+      <concept id="5082661585110796296" name="com.mbeddr.formal.safety.stamp.structure.HazardRef" flags="ng" index="gxbn0">
+        <reference id="5082661585110796314" name="hazard" index="gxbni" />
+      </concept>
+      <concept id="4185693763139315091" name="com.mbeddr.formal.safety.stamp.structure.Action" flags="ng" index="Sqzvu" />
+      <concept id="4185693763139328936" name="com.mbeddr.formal.safety.stamp.structure.Feedback" flags="ng" index="Sq$B_" />
+      <concept id="2004523000582373898" name="com.mbeddr.formal.safety.stamp.structure.UnsafeControlAnalysis" flags="ng" index="1E0nO6">
+        <reference id="2004523000582447869" name="functionalControlStructure" index="1E05RL" />
+        <child id="2004523000582374978" name="unsafeController" index="1E0n_e" />
+      </concept>
+      <concept id="2004523000582373920" name="com.mbeddr.formal.safety.stamp.structure.UnsafeController" flags="ng" index="1E0nOG">
+        <reference id="2004523000582373921" name="controller" index="1E0nOH" />
+        <child id="2004523000582373924" name="unsafeActions" index="1E0nOC" />
+      </concept>
+      <concept id="2004523000582373923" name="com.mbeddr.formal.safety.stamp.structure.UnsafeControllerAction" flags="ng" index="1E0nOJ">
+        <reference id="2004523000582375039" name="action" index="1E0n_N" />
+        <child id="2004523000582414398" name="providing" index="1E0tWM" />
+        <child id="2004523000582414407" name="stoppedTooSoonAppliedTooLong" index="1E0tXb" />
+        <child id="2004523000582414402" name="soonLateOutOfSequence" index="1E0tXe" />
+        <child id="2004523000582413313" name="notProviding" index="1E0ucd" />
+      </concept>
+      <concept id="2004523000582631964" name="com.mbeddr.formal.safety.stamp.structure.TextualContext" flags="ng" index="1E0COg">
+        <child id="2004523000582631965" name="text" index="1E0COh" />
+      </concept>
+      <concept id="2004523000582631956" name="com.mbeddr.formal.safety.stamp.structure.PatternActionDescription" flags="ng" index="1E0COo">
+        <child id="2004523000582631960" name="consequence" index="1E0COk" />
+        <child id="2004523000582631957" name="context" index="1E0COp" />
+      </concept>
+      <concept id="4286195509388000609" name="com.mbeddr.formal.safety.stamp.structure.Controls" flags="ng" index="1XypPU" />
+      <concept id="4286195509387940513" name="com.mbeddr.formal.safety.stamp.structure.Controller" flags="ng" index="1XyJaU" />
+      <concept id="4286195509387830511" name="com.mbeddr.formal.safety.stamp.structure.SafetyControlStructureConnectionBase" flags="ng" index="1X_0jO">
+        <reference id="4185693763139125834" name="target" index="SrP07" />
+        <reference id="4185693763139125829" name="source" index="SrP08" />
+        <child id="4185693763139328937" name="actions" index="Sq$B$" />
+      </concept>
+      <concept id="4286195509387830509" name="com.mbeddr.formal.safety.stamp.structure.FunctionalControlStructure" flags="ng" index="1X_0jQ">
+        <child id="4286195509387832126" name="connections" index="1X_0G_" />
+        <child id="4286195509387832124" name="content" index="1X_0GB" />
+      </concept>
+      <concept id="2036977205576040320" name="com.mbeddr.formal.safety.stamp.structure.NotApplicableAction" flags="ng" index="3XErhT" />
     </language>
     <language id="92d2ea16-5a42-4fdf-a676-c7604efe3504" name="de.slisson.mps.richtext">
       <concept id="2557074442922380897" name="de.slisson.mps.richtext.structure.Text" flags="ng" index="19SGf9">
@@ -167,6 +208,7 @@
       </concept>
       <concept id="2319506556913310852" name="de.itemis.mps.editor.diagram.layout.structure.Layout_Connection" flags="ng" index="2VclpC">
         <child id="2319506556913311101" name="anchors" index="2Vcluh" />
+        <child id="4767615435799372763" name="labels" index="3ul5Gx" />
       </concept>
       <concept id="2319506556913310727" name="de.itemis.mps.editor.diagram.layout.structure.Point" flags="ng" index="2VclrF">
         <property id="2319506556913310861" name="x" index="2Vclpx" />
@@ -182,6 +224,14 @@
       <concept id="738815095926749345" name="de.itemis.mps.editor.diagram.layout.structure.Layout_Port" flags="ng" index="1pa3jb">
         <property id="7964702570467115501" name="ordinal" index="2gRgW$" />
         <property id="738815095926749379" name="portName" index="1pa3iD" />
+      </concept>
+      <concept id="4767615435799372731" name="de.itemis.mps.editor.diagram.layout.structure.Layout_EdgeLabel" flags="ng" index="3ul5H1">
+        <property id="4767615435799372759" name="type" index="3ul5GH" />
+        <child id="4767615435799372761" name="position" index="3ul5Gz" />
+      </concept>
+      <concept id="3253043142928125505" name="de.itemis.mps.editor.diagram.layout.structure.RelativePosition" flags="ng" index="3wpmZ1">
+        <child id="3253043142928125557" name="referencePoint" index="3wpmZP" />
+        <child id="3253043142928125559" name="offset" index="3wpmZR" />
       </concept>
     </language>
   </registry>
@@ -734,6 +784,366 @@
       </node>
     </node>
     <node concept="2SQmWS" id="5kaUUWfwi4c" role="2HcuB8" />
+  </node>
+  <node concept="1X_0jQ" id="7lhowjpMxMx">
+    <property role="TrG5h" value="_015_ladekabel_STAMP_arch" />
+    <node concept="1XyJaU" id="7lhowjpMxMy" role="1X_0GB">
+      <property role="TrG5h" value="IC-CPD(In-Cable_Control-and-Protection-Device)&#10;" />
+    </node>
+    <node concept="37mRI7" id="7lhowjpMxMz" role="lGtFl">
+      <node concept="37mRIm" id="7lhowjpMxMD" role="37mRID">
+        <property role="37mO49" value="8037942442500087359" />
+        <node concept="gqqVs" id="7lhowjpMxMQ" role="37mO4d">
+          <property role="gqqTZ" value="114.0" />
+          <property role="gqqTW" value="46.000298364257816" />
+          <property role="gqqTX" value="380.0" />
+          <property role="gqqTy" value="48.0" />
+          <property role="TgtnS" value="1.0;0.0;0.0;1.0;0.0;0.0" />
+        </node>
+      </node>
+      <node concept="37mRIm" id="7lhowjpMxME" role="37mRID">
+        <property role="37mO49" value="8037942442500087708" />
+        <node concept="gqqVs" id="7lhowjpMxMR" role="37mO4d">
+          <property role="gqqTZ" value="116.0" />
+          <property role="gqqTW" value="12.0001" />
+          <property role="gqqTX" value="124.0" />
+          <property role="gqqTy" value="30.0" />
+          <property role="TgtnS" value="1.0;0.0;0.0;1.0;0.0;0.0" />
+        </node>
+      </node>
+      <node concept="37mRIm" id="7lhowjpMxMF" role="37mRID">
+        <property role="37mO49" value="8037942442500087733" />
+        <node concept="gqqVs" id="7lhowjpMxMS" role="37mO4d">
+          <property role="gqqTZ" value="242.0" />
+          <property role="gqqTW" value="269.0" />
+          <property role="gqqTX" value="124.0" />
+          <property role="gqqTy" value="35.0" />
+          <property role="TgtnS" value="1.0;0.0;0.0;1.0;0.0;0.0" />
+        </node>
+      </node>
+      <node concept="37mRIm" id="7lhowjpMxMG" role="37mRID">
+        <property role="37mO49" value="8037942442500087759" />
+        <node concept="2VclpC" id="7lhowjpMxMT" role="37mO4d">
+          <node concept="3ul5H1" id="7lhowjpMxMZ" role="3ul5Gx">
+            <property role="3ul5GH" value="label" />
+            <node concept="3wpmZ1" id="7lhowjpMxN6" role="3ul5Gz">
+              <node concept="2VclrF" id="7lhowjpMxNb" role="3wpmZR">
+                <property role="2Vclpx" value="170.5" />
+                <property role="2Vclpz" value="137.5" />
+              </node>
+              <node concept="2VclrF" id="7lhowjpMxNc" role="3wpmZP">
+                <property role="2Vclpx" value="0.0" />
+                <property role="2Vclpz" value="0.0" />
+              </node>
+            </node>
+          </node>
+        </node>
+      </node>
+      <node concept="37mRIm" id="7lhowjpMxMH" role="37mRID">
+        <property role="37mO49" value="8037942442500087803" />
+        <node concept="2VclpC" id="7lhowjpMxMU" role="37mO4d">
+          <node concept="3ul5H1" id="7lhowjpMxN0" role="3ul5Gx">
+            <property role="3ul5GH" value="label" />
+            <node concept="3wpmZ1" id="7lhowjpMxN7" role="3ul5Gz">
+              <node concept="2VclrF" id="7lhowjpMxNd" role="3wpmZR">
+                <property role="2Vclpx" value="58.00004999999999" />
+                <property role="2Vclpz" value="60.00019836425781" />
+              </node>
+              <node concept="2VclrF" id="7lhowjpMxNe" role="3wpmZP">
+                <property role="2Vclpx" value="0.0" />
+                <property role="2Vclpz" value="0.0" />
+              </node>
+            </node>
+          </node>
+        </node>
+      </node>
+      <node concept="37mRIm" id="7lhowjpMxMI" role="37mRID">
+        <property role="37mO49" value="8037942442500087854" />
+        <node concept="2VclpC" id="7lhowjpMxMV" role="37mO4d">
+          <node concept="3ul5H1" id="7lhowjpMxN1" role="3ul5Gx">
+            <property role="3ul5GH" value="label" />
+            <node concept="3wpmZ1" id="7lhowjpMxN8" role="3ul5Gz">
+              <node concept="2VclrF" id="7lhowjpMxNf" role="3wpmZR">
+                <property role="2Vclpx" value="386.00005" />
+                <property role="2Vclpz" value="155.00039672851562" />
+              </node>
+              <node concept="2VclrF" id="7lhowjpMxNg" role="3wpmZP">
+                <property role="2Vclpx" value="0.0" />
+                <property role="2Vclpz" value="0.0" />
+              </node>
+            </node>
+          </node>
+          <node concept="2VclrF" id="7lhowjpMxN2" role="2Vcluh">
+            <property role="2Vclpx" value="359.0" />
+            <property role="2Vclpz" value="190.0" />
+          </node>
+        </node>
+      </node>
+      <node concept="37mRIm" id="7lhowjpMxMJ" role="37mRID">
+        <property role="37mO49" value="8037942442500088152" />
+        <node concept="2VclpC" id="7lhowjpMxMW" role="37mO4d">
+          <node concept="3ul5H1" id="7lhowjpMxN3" role="3ul5Gx">
+            <property role="3ul5GH" value="label" />
+            <node concept="3wpmZ1" id="7lhowjpMxN9" role="3ul5Gz">
+              <node concept="2VclrF" id="7lhowjpMxNh" role="3wpmZR">
+                <property role="2Vclpx" value="31.0" />
+                <property role="2Vclpz" value="160.2501491821289" />
+              </node>
+              <node concept="2VclrF" id="7lhowjpMxNi" role="3wpmZP">
+                <property role="2Vclpx" value="0.0" />
+                <property role="2Vclpz" value="0.0" />
+              </node>
+            </node>
+          </node>
+          <node concept="2VclrF" id="7lhowjpMxN4" role="2Vcluh">
+            <property role="2Vclpx" value="241.99993618400475" />
+            <property role="2Vclpz" value="182.99993618400475" />
+          </node>
+        </node>
+      </node>
+      <node concept="37mRIm" id="7lhowjpMxMK" role="37mRID">
+        <property role="37mO49" value="8453645748524423893" />
+        <node concept="gqqVs" id="7lhowjpMxMX" role="37mO4d">
+          <property role="gqqTZ" value="506.0" />
+          <property role="gqqTW" value="276.0" />
+          <property role="gqqTX" value="124.0" />
+          <property role="gqqTy" value="30.0" />
+          <property role="TgtnS" value="1.0;0.0;0.0;1.0;0.0;0.0" />
+        </node>
+      </node>
+      <node concept="37mRIm" id="7lhowjpMxML" role="37mRID">
+        <property role="37mO49" value="8453645748524423937" />
+        <node concept="2VclpC" id="7lhowjpMxMY" role="37mO4d">
+          <node concept="3ul5H1" id="7lhowjpMxN5" role="3ul5Gx">
+            <property role="3ul5GH" value="label" />
+            <node concept="3wpmZ1" id="7lhowjpMxNa" role="3ul5Gz">
+              <node concept="2VclrF" id="7lhowjpMxNj" role="3wpmZR">
+                <property role="2Vclpx" value="436.0" />
+                <property role="2Vclpz" value="288.75" />
+              </node>
+              <node concept="2VclrF" id="7lhowjpMxNk" role="3wpmZP">
+                <property role="2Vclpx" value="0.0" />
+                <property role="2Vclpz" value="0.0" />
+              </node>
+            </node>
+          </node>
+        </node>
+      </node>
+      <node concept="37mRIm" id="19xrB$9xyo6" role="37mRID">
+        <property role="37mO49" value="8453645748524424354" />
+        <node concept="gqqVs" id="19xrB$9xyo5" role="37mO4d">
+          <property role="gqqTZ" value="41.0" />
+          <property role="gqqTW" value="82.0" />
+          <property role="gqqTX" value="380.0" />
+          <property role="gqqTy" value="48.0" />
+          <property role="TgtnS" value="1.0;0.0;0.0;1.0;0.0;0.0" />
+        </node>
+      </node>
+      <node concept="37mRIm" id="19xrB$9xyo8" role="37mRID">
+        <property role="37mO49" value="8453645748524424356" />
+        <node concept="gqqVs" id="19xrB$9xyo7" role="37mO4d">
+          <property role="gqqTZ" value="218.0" />
+          <property role="gqqTW" value="273.0" />
+          <property role="gqqTX" value="124.0" />
+          <property role="gqqTy" value="30.0" />
+          <property role="TgtnS" value="1.0;0.0;0.0;1.0;0.0;0.0" />
+        </node>
+      </node>
+      <node concept="37mRIm" id="19xrB$9xyoa" role="37mRID">
+        <property role="37mO49" value="8453645748524424359" />
+        <node concept="gqqVs" id="19xrB$9xyo9" role="37mO4d">
+          <property role="gqqTZ" value="447.0" />
+          <property role="gqqTW" value="259.0" />
+          <property role="gqqTX" value="116.0" />
+          <property role="gqqTy" value="30.0" />
+          <property role="TgtnS" value="1.0;0.0;0.0;1.0;0.0;0.0" />
+        </node>
+      </node>
+      <node concept="37mRIm" id="19xrB$9xyoc" role="37mRID">
+        <property role="37mO49" value="8453645748524424357" />
+        <node concept="2VclpC" id="19xrB$9xyob" role="37mO4d">
+          <node concept="3ul5H1" id="19xrB$9xyod" role="3ul5Gx">
+            <property role="3ul5GH" value="label" />
+            <node concept="3wpmZ1" id="19xrB$9xyoe" role="3ul5Gz">
+              <node concept="2VclrF" id="19xrB$9xyof" role="3wpmZR">
+                <property role="2Vclpx" value="75.0" />
+                <property role="2Vclpz" value="190.5" />
+              </node>
+              <node concept="2VclrF" id="19xrB$9xyog" role="3wpmZP">
+                <property role="2Vclpx" value="0.0" />
+                <property role="2Vclpz" value="0.0" />
+              </node>
+            </node>
+          </node>
+        </node>
+      </node>
+      <node concept="37mRIm" id="19xrB$9xyoi" role="37mRID">
+        <property role="37mO49" value="8453645748524424358" />
+        <node concept="2VclpC" id="19xrB$9xyoh" role="37mO4d">
+          <node concept="3ul5H1" id="19xrB$9xyoj" role="3ul5Gx">
+            <property role="3ul5GH" value="label" />
+            <node concept="3wpmZ1" id="19xrB$9xyok" role="3ul5Gz">
+              <node concept="2VclrF" id="19xrB$9xyol" role="3wpmZR">
+                <property role="2Vclpx" value="314.0" />
+                <property role="2Vclpz" value="171.5" />
+              </node>
+              <node concept="2VclrF" id="19xrB$9xyom" role="3wpmZP">
+                <property role="2Vclpx" value="0.0" />
+                <property role="2Vclpz" value="0.0" />
+              </node>
+            </node>
+          </node>
+        </node>
+      </node>
+      <node concept="37mRIm" id="19xrB$9xyoo" role="37mRID">
+        <property role="37mO49" value="8453645748524424360" />
+        <node concept="2VclpC" id="19xrB$9xyon" role="37mO4d">
+          <node concept="3ul5H1" id="19xrB$9xyop" role="3ul5Gx">
+            <property role="3ul5GH" value="label" />
+            <node concept="3wpmZ1" id="19xrB$9xyoq" role="3ul5Gz">
+              <node concept="2VclrF" id="19xrB$9xyor" role="3wpmZR">
+                <property role="2Vclpx" value="383.0" />
+                <property role="2Vclpz" value="229.0" />
+              </node>
+              <node concept="2VclrF" id="19xrB$9xyos" role="3wpmZP">
+                <property role="2Vclpx" value="0.0" />
+                <property role="2Vclpz" value="0.0" />
+              </node>
+            </node>
+          </node>
+        </node>
+      </node>
+    </node>
+    <node concept="1XyJaU" id="7lhowjpMxM$" role="1X_0GB">
+      <property role="TrG5h" value="Charging Cable" />
+    </node>
+    <node concept="1XypPU" id="7lhowjpMxM_" role="1X_0G_">
+      <ref role="SrP08" node="7lhowjpMxMy" resolve="IC-CPD(In-Cable_Control-and-Protection-Device)&#10;" />
+      <ref role="SrP07" node="7lhowjpMxM$" resolve="Charging Cable" />
+      <node concept="Sqzvu" id="7lhowjpMxMM" role="Sq$B$">
+        <property role="TrG5h" value="Close Switch (start charging)" />
+      </node>
+      <node concept="Sqzvu" id="7lhowjpMxMN" role="Sq$B$">
+        <property role="TrG5h" value="Open Switch (stop charging)" />
+      </node>
+    </node>
+    <node concept="Sq$B_" id="7lhowjpMxMA" role="1X_0G_">
+      <ref role="SrP08" node="7lhowjpMxM$" resolve="Charging Cable" />
+      <ref role="SrP07" node="7lhowjpMxMy" resolve="IC-CPD(In-Cable_Control-and-Protection-Device)&#10;" />
+      <node concept="Sqzvu" id="7lhowjpMxMO" role="Sq$B$">
+        <property role="TrG5h" value="Providing sensor data (residual Current)" />
+      </node>
+    </node>
+    <node concept="1XyJaU" id="7lhowjpMxMB" role="1X_0GB">
+      <property role="TrG5h" value="Mains (House)" />
+    </node>
+    <node concept="1XypPU" id="7lhowjpMxMC" role="1X_0G_">
+      <ref role="SrP08" node="7lhowjpMxMB" resolve="Mains (House)" />
+      <ref role="SrP07" node="7lhowjpMxM$" resolve="Charging Cable" />
+      <node concept="Sqzvu" id="7lhowjpMxMP" role="Sq$B$">
+        <property role="TrG5h" value="NoName" />
+      </node>
+    </node>
+  </node>
+  <node concept="1E0nO6" id="7lhowjpMxNl">
+    <property role="TrG5h" value="_015_ladekabel_STPA" />
+    <ref role="1E05RL" node="7lhowjpMxMx" resolve="_015_ladekabel_STAMP_arch" />
+    <node concept="1E0nOG" id="7lhowjpMxNm" role="1E0n_e">
+      <ref role="1E0nOH" node="7lhowjpMxMy" resolve="IC-CPD(In-Cable_Control-and-Protection-Device)&#10;" />
+      <node concept="1E0nOJ" id="7lhowjpMxNp" role="1E0nOC">
+        <ref role="1E0n_N" node="7lhowjpMxMM" resolve="Close Switch (start charging)" />
+        <node concept="3XErhT" id="7lhowjpMxNs" role="1E0ucd" />
+        <node concept="3XErhT" id="7lhowjpMxNt" role="1E0tWM" />
+        <node concept="3XErhT" id="7lhowjpMxNu" role="1E0tXe" />
+        <node concept="1E0COo" id="7lhowjpMxNv" role="1E0tXb">
+          <node concept="1E0COg" id="7lhowjpMxNC" role="1E0COp">
+            <node concept="19SGf9" id="7lhowjpMxNO" role="1E0COh">
+              <node concept="19SUe$" id="7lhowjpMxNU" role="19SJt6">
+                <property role="19SUeA" value="Closed too long when residual current &gt; 10mA" />
+              </node>
+            </node>
+          </node>
+          <node concept="gxbn0" id="7lhowjpMxND" role="1E0COk">
+            <ref role="gxbni" node="2VIqKfEJeEs" resolve="Electrical Hazard" />
+          </node>
+        </node>
+      </node>
+    </node>
+    <node concept="1E0nOG" id="7lhowjpMxNn" role="1E0n_e">
+      <ref role="1E0nOH" node="7lhowjpMxMy" resolve="IC-CPD(In-Cable_Control-and-Protection-Device)&#10;" />
+      <node concept="1E0nOJ" id="7lhowjpMxNq" role="1E0nOC">
+        <ref role="1E0n_N" node="7lhowjpMxMN" resolve="Open Switch (stop charging)" />
+        <node concept="1E0COo" id="7lhowjpMxNw" role="1E0tXe">
+          <node concept="1E0COg" id="7lhowjpMxNE" role="1E0COp">
+            <node concept="19SGf9" id="7lhowjpMxNP" role="1E0COh">
+              <node concept="19SUe$" id="7lhowjpMxNV" role="19SJt6">
+                <property role="19SUeA" value="Opening too late when residual current &gt; 10mA" />
+              </node>
+            </node>
+          </node>
+          <node concept="gxbn0" id="7lhowjpMxNF" role="1E0COk">
+            <ref role="gxbni" node="2VIqKfEJeEs" resolve="Electrical Hazard" />
+          </node>
+        </node>
+        <node concept="1E0COo" id="7lhowjpMxNx" role="1E0ucd">
+          <node concept="1E0COg" id="7lhowjpMxNG" role="1E0COp">
+            <node concept="19SGf9" id="7lhowjpMxNQ" role="1E0COh">
+              <node concept="19SUe$" id="7lhowjpMxNW" role="19SJt6">
+                <property role="19SUeA" value="Not opening when residual current &gt;10mA" />
+              </node>
+            </node>
+          </node>
+          <node concept="gxbn0" id="7lhowjpMxNH" role="1E0COk">
+            <ref role="gxbni" node="2VIqKfEJeEs" resolve="Electrical Hazard" />
+          </node>
+        </node>
+        <node concept="1E0COo" id="7lhowjpMxNy" role="1E0tXb">
+          <node concept="1E0COg" id="7lhowjpMxNI" role="1E0COp">
+            <node concept="19SGf9" id="7lhowjpMxNR" role="1E0COh">
+              <node concept="19SUe$" id="7lhowjpMxNX" role="19SJt6">
+                <property role="19SUeA" value="Stopped opening too soon when residual current &gt;10mA" />
+              </node>
+            </node>
+          </node>
+          <node concept="gxbn0" id="7lhowjpMxNJ" role="1E0COk">
+            <ref role="gxbni" node="2VIqKfEJeEs" resolve="Electrical Hazard" />
+          </node>
+        </node>
+        <node concept="3XErhT" id="7lhowjpMxNz" role="1E0tWM" />
+      </node>
+    </node>
+    <node concept="1E0nOG" id="7lhowjpMxNo" role="1E0n_e">
+      <ref role="1E0nOH" node="7lhowjpMxM$" resolve="Charging Cable" />
+      <node concept="1E0nOJ" id="7lhowjpMxNr" role="1E0nOC">
+        <ref role="1E0n_N" node="7lhowjpMxMO" resolve="Providing sensor data (residual Current)" />
+        <node concept="1E0COo" id="7lhowjpMxN$" role="1E0tXe">
+          <node concept="1E0COg" id="7lhowjpMxNK" role="1E0COp">
+            <node concept="19SGf9" id="7lhowjpMxNS" role="1E0COh">
+              <node concept="19SUe$" id="7lhowjpMxNY" role="19SJt6">
+                <property role="19SUeA" value="Providing sensor data too late or out of sequence when residual current &gt;10mA" />
+              </node>
+            </node>
+          </node>
+          <node concept="gxbn0" id="7lhowjpMxNL" role="1E0COk">
+            <ref role="gxbni" node="2VIqKfEJeEs" resolve="Electrical Hazard" />
+          </node>
+        </node>
+        <node concept="3XErhT" id="7lhowjpMxN_" role="1E0tXb" />
+        <node concept="3XErhT" id="7lhowjpMxNA" role="1E0tWM" />
+        <node concept="1E0COo" id="7lhowjpMxNB" role="1E0ucd">
+          <node concept="1E0COg" id="7lhowjpMxNM" role="1E0COp">
+            <node concept="19SGf9" id="7lhowjpMxNT" role="1E0COh">
+              <node concept="19SUe$" id="7lhowjpMxNZ" role="19SJt6">
+                <property role="19SUeA" value="Incorrect or no sensor data is provided" />
+              </node>
+            </node>
+          </node>
+          <node concept="gxbn0" id="7lhowjpMxNN" role="1E0COk">
+            <ref role="gxbni" node="2VIqKfEJeEs" resolve="Electrical Hazard" />
+          </node>
+        </node>
+      </node>
+    </node>
   </node>
 </model>
 
